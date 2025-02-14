@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация персонажа</title>
+    <style>
+        body {
+            background-color: red;
+        }
+        canvas {
+            border: 1px solid black;
+            width: 100%;
+            height: 100vh;
+            background-color: aqua;
+            /* transform: scale(1); */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="300px" height="200px"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const spriteSheet = new Image();
+        spriteSheet.src = 'man.png'; // Укажите путь к вашей спрайт таблице
+        const spriteWidth = 100; // Ширина одного кадра
+        const spriteHeight = 150; // Высота одного кадра
+        const totalFrames = 24; // Общее количество кадров в спрайте по горизонтали
+        const totalRows = 8; // Общее количество строк в спрайте
+        let currentFrame = 0;
+        let currentRow = 0; // Текущая строка
+        let x = 0; // Начальная позиция персонажа
+        const speed = 0; // Скорость движения персонажа
+        let frameInterval = 80; // Интервал смены кадров в миллисекундах
+        let lastFrameTime = 0; // Время последнего обновления кадра
+
+        function update(currentTime) {
+            if (currentTime - lastFrameTime >= frameInterval) {
+                currentFrame = (currentFrame + 1) % totalFrames; // Обновляем текущий кадр
+                if (currentFrame === 0) {
+                    currentRow = (currentRow + 1) % totalRows; // Переключаем на следующую строку
+                }
+                lastFrameTime = currentTime; // Обновляем время последнего кадра
+            }
+
+            x += speed; // Двигаем персонажа вправо
+
+            if (x > canvas.width) {
+                x = -spriteWidth; // Начинаем снова с левой стороны
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Очищаем канвас
+            ctx.drawImage(
+                spriteSheet,
+                currentFrame * spriteWidth, // X-координата кадра в спрайте
+                currentRow * spriteHeight, // Y-координата кадра (с учетом строки)
+                spriteWidth,
+                spriteHeight,
+                x,
+                canvas.height / 2 - spriteHeight / 2, // Центрируем по вертикали
+                spriteWidth,
+                spriteHeight
+            );
+        }
+
+        function gameLoop(currentTime) {
+            update(currentTime);
+            draw();
+            requestAnimationFrame(gameLoop); // Запускаем следующий кадр
+        }
+
+        spriteSheet.onload = function() {
+            gameLoop(0); // Начинаем анимацию после загрузки спрайт таблицы
+        };
+    </script>
+</body>
+</html>

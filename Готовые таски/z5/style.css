@@ -1,0 +1,33 @@
+.header {
+    background-color: blueviolet;
+    height: 250px;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    background-color: aquamarine;
+}
+.menu {
+    width: 30%;
+    background-color: brown;
+}
+.posts {
+    width: 70%;
+    background-color: coral;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+.post {
+    width: 30%;
+    height: 30%;
+    background-color: white;
+}
+.footer {
+    background-color: hotpink;
+    height: 100px;
+}

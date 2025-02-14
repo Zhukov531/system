@@ -1,0 +1,39 @@
+body {
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    width: 88px; /* Оставляем место только под один кадр */
+    height: 100px;
+    overflow: hidden; /* Обрезаем лишнее */
+    background: red;
+}
+
+.runner {
+    position: absolute;
+    width: 704px; /* 88px * 8 кадров */
+    height: 100px;
+    background: url('sprite.png') left center;
+    animation: run 1s steps(8) infinite;
+}
+
+@keyframes run {
+    from { background-position: 0; }
+    to { background-position: -704px; } /* Переключаем кадры */
+}
+
+@keyframes move {
+    from { transform: translateX(-100px); }
+    to { transform: translateX(100vw); }
+}
+
+/* Двигаем сам контейнер */
+.container {
+    animation: move 3s linear infinite;
+}

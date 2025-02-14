@@ -1,0 +1,4 @@
+img {
+    filter: grayscale(1) blur(1px);
+    width: 400px;
+}

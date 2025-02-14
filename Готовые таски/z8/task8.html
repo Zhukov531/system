@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экранная клавиатура</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #inputField {
+            width: 300px;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+        .key {
+            padding: 15px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .key:hover {
+            background-color: #e0e0e0;
+        }
+        .key:active {
+            background-color: #d0d0d0;
+        }
+        .shift {
+            grid-column: span 2;
+        }
+        .backspace {
+            grid-column: span 2;
+        }
+        .space {
+            grid-column: span 5;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" id="inputField" placeholder="Введите текст" readonly>
+
+<div class="keyboard">
+    <!-- Первая строка -->
+    <div class="key" onclick="addCharacter('q')">q</div>
+    <div class="key" onclick="addCharacter('w')">w</div>
+    <div class="key" onclick="addCharacter('e')">e</div>
+    <div class="key" onclick="addCharacter('r')">r</div>
+    <div class="key" onclick="addCharacter('t')">t</div>
+    <div class="key" onclick="addCharacter('y')">y</div>
+    <div class="key" onclick="addCharacter('u')">u</div>
+    <div class="key" onclick="addCharacter('i')">i</div>
+    <div class="key" onclick="addCharacter('o')">o</div>
+    <div class="key" onclick="addCharacter('p')">p</div>
+    
+    <!-- Вторая строка -->
+    <div class="key" onclick="addCharacter('a')">a</div>
+    <div class="key" onclick="addCharacter('s')">s</div>
+    <div class="key" onclick="addCharacter('d')">d</div>
+    <div class="key" onclick="addCharacter('f')">f</div>
+    <div class="key" onclick="addCharacter('g')">g</div>
+    <div class="key" onclick="addCharacter('h')">h</div>
+    <div class="key" onclick="addCharacter('j')">j</div>
+    <div class="key" onclick="addCharacter('k')">k</div>
+    <div class="key" onclick="addCharacter('l')">l</div>
+    
+    <!-- Третья строка -->
+    <div class="key" onclick="addCharacter('z')">z</div>
+    <div class="key" onclick="addCharacter('x')">x</div>
+    <div class="key" onclick="addCharacter('c')">c</div>
+    <div class="key" onclick="addCharacter('v')">v</div>
+    <div class="key" onclick="addCharacter('b')">b</div>
+    <div class="key" onclick="addCharacter('n')">n</div>
+    <div class="key" onclick="addCharacter('m')">m</div>
+    
+    <!-- Четвертая строка с цифрами -->
+    <div class="key" onclick="addCharacter('1')">1</div>
+    <div class="key" onclick="addCharacter('2')">2</div>
+    <div class="key" onclick="addCharacter('3')">3</div>
+    <div class="key" onclick="addCharacter('4')">4</div>
+    <div class="key" onclick="addCharacter('5')">5</div>
+    <div class="key" onclick="addCharacter('6')">6</div>
+    <div class="key" onclick="addCharacter('7')">7</div>
+    <div class="key" onclick="addCharacter('8')">8</div>
+    <div class="key" onclick="addCharacter('9')">9</div>
+    <div class="key" onclick="addCharacter('0')">0</div>
+
+    <!-- Пятая строка с пробелом и специальными символами -->
+    <div class="key space" onclick="addCharacter(' ')">Пробел</div>
+    <div class="key" onclick="addCharacter('!')">!</div>
+    <div class="key" onclick="addCharacter('@')">@</div>
+    <div class="key" onclick="addCharacter('#')">#</div>
+    <div class="key" onclick="addCharacter('$')">$</div>
+    <div class="key" onclick="addCharacter('%')">%</div>
+    <div class="key" onclick="addCharacter('^')">^</div>
+    <div class="key" onclick="addCharacter('&')">&</div>
+    <div class="key" onclick="addCharacter('*')">*</div>
+    <div class="key" onclick="addCharacter('(')">(</div>
+    <div class="key" onclick="addCharacter(')')">)</div>
+    
+    <div class="key shift" onclick="toggleShift()">Shift</div>
+    <div class="key backspace" onclick="removeCharacter()">Backspace</div>
+</div>
+
+<script>
+    let isShifted = false;
+
+    function addCharacter(char) {
+        const inputField = document.getElementById('inputField');
+        if (isShifted) {
+            char = char.toUpperCase();
+        }
+        inputField.value += char;
+    }
+    function removeCharacter() {
+        const inputField = document.getElementById('inputField');
+        inputField.value = inputField.value.slice(0, -1);
+    }
+
+    function toggleShift() {
+        isShifted = !isShifted;
+        const keys = document.querySelectorAll('.key');
+
+        keys.forEach(key => {
+            if (key.textContent.length === 1) {
+                key.textContent = isShifted ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
