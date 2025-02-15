@@ -1,0 +1,38 @@
+# Зависимости
+node_modules/
+/vendor/
+
+# Файлы сборки
+/build/
+/dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Логи и базы данных
+*.log
+*.sqlite
+*.db
+
+# Файлы среды разработки
+.env
+.env.local
+.env.*.local
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Кэш
+.cache/
+.npm/
+.yarn/
+
+# Временные файлы
+tmp/
+temp/
