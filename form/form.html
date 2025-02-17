@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="form">
+        <div class="form-content">
+            <h1>Регистрация</h1>
+            <input placeholder="Email" class="email" type="email">
+            <input placeholder="Имя" class="name" type="name">
+            <input placeholder="Фамилия" class="surname" type="name">
+            <input placeholder="Возраст" class="number" type="number">
+
+            <div class="man">
+                <input class="sex" type="radio" id="man" name="sex" value="man"/>
+                <label for="man">Man</label>
+            </div>
+            <div class="woman">
+                <input class="sex" type="radio" id="woman" name="sex" value="woman"/>
+                <label for="woman">Woman</label>
+            </div>
+
+            <input placeholder="Пароль" class="password" type="password">
+            <input placeholder="Повторите пароль" class="password" type="password">
+            <div class="upload">
+                
+            </div>
+            <div class="captcha">
+                <div class="captcha-content">
+                    <input type="checkbox" name="captcha" id="captcha_id">
+                    <label for="captcha_id">Я не человек</label>
+                </div>
+            </div>
+            <div class="btn">
+                Зарегистрироваться
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

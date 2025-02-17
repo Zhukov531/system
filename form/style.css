@@ -1,0 +1,87 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    height: 100vh;
+}
+.form-content {
+    background: #202020;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 300px;
+
+}
+.form-content h1{
+    margin: 0;
+    text-align: center;
+}
+.form-content input{
+    font-size: 18px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+.email {
+    margin-top: 30px;
+}
+.name {
+}
+.surname{
+}
+.number {
+
+}
+.man{
+    margin-top: 10px;
+}
+.sex {
+
+}
+.woman{
+    margin-bottom: 10px;
+}
+.password {
+    
+}
+.upload {
+}
+.captcha {
+    /* background: blue; */
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.captcha-content {
+    /* background: red; */
+    border: 1px solid white;
+    box-shadow: 0 0 8px rgb(166, 252, 255);
+    padding: 20px 60px;
+    border-radius: 15px;
+}
+
+
+
+.btn{
+    margin-top: 20px;
+    text-align: center;
+    background: rgb(0, 0, 0);
+    padding: 15px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.534);
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+}
+.btn:hover{
+    box-shadow: 0px 0px 10px rgba(0, 255, 242, 0.534);
+    scale: 1.01;
+}
+
